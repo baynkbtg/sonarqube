@@ -26,11 +26,9 @@ import ListView from './list-view';
 import ListFooterView from './list-footer-view';
 
 const App = new Marionette.Application();
-const init = function () {
-  const options = window.sonarqube;
-
+const init = function (el) {
   // Layout
-  this.layout = new Layout({ el: options.el });
+  this.layout = new Layout({ el });
   this.layout.render();
 
   // Collection
@@ -72,11 +70,13 @@ App.requestTypes = function () {
   });
 };
 
-App.on('start', function () {
+App.on('start', function (el) {
   $.when(App.requestDomains(), App.requestTypes()).done(function () {
-    init.call(App);
+    init.call(App, el);
   });
 });
 
-window.sonarqube.appStarted.then(options => App.start(options));
+export default function (el) {
+  App.start(el);
+}
 

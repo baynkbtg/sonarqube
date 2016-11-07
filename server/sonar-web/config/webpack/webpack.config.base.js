@@ -35,7 +35,6 @@ module.exports = {
 
     'maintenance': './src/main/js/apps/maintenance/app.js',
     'markdown': './src/main/js/apps/markdown/app.js',
-    'metrics': './src/main/js/apps/metrics/app.js',
     'project-admin': './src/main/js/apps/project-admin/app.js',
     'settings': './src/main/js/apps/settings/app.js',
     'source-viewer': './src/main/js/apps/source-viewer/app.js'
