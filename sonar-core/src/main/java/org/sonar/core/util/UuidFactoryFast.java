@@ -26,7 +26,7 @@ import java.security.SecureRandom;
  * About 10x faster than {@link UuidFactoryImpl}
  * It does not take into account the MAC address to calculate the ids, so it is machine-independent.
  */
-public class UuidFactoryFast implements UuidFactory {
+public class UuidFactoryFast implements InternalUuidFactory {
   private static UuidFactoryFast instance = new UuidFactoryFast();
   private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
   private static int sequenceNumber = new SecureRandom().nextInt();
@@ -37,6 +37,13 @@ public class UuidFactoryFast implements UuidFactory {
 
   @Override
   public String create() {
+    byte[] uuidBytes = createAsByteArray();
+
+    return byteArrayToHex(uuidBytes);
+  }
+
+  @Override
+  public byte[] createAsByteArray() {
     long timestamp = System.currentTimeMillis();
 
     byte[] uuidBytes = new byte[9];
@@ -46,8 +53,7 @@ public class UuidFactoryFast implements UuidFactory {
 
     // Sequence number adds 3 bytes:
     putLong(uuidBytes, getSequenceNumber(), 6, 3);
-
-    return byteArrayToHex(uuidBytes);
+    return uuidBytes;
   }
 
   public static UuidFactoryFast getInstance() {

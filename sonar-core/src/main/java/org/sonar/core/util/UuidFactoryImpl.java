@@ -28,7 +28,7 @@ import org.apache.commons.codec.binary.Base64;
  * used the day {@code UuidFactoryImpl} is moved outside module sonar-core.
  * See https://github.com/elastic/elasticsearch/blob/master/core/src/main/java/org/elasticsearch/common/TimeBasedUUIDGenerator.java
  */
-public enum UuidFactoryImpl implements UuidFactory {
+public enum UuidFactoryImpl implements InternalUuidFactory {
 
   /**
    * Should be removed as long {@link Uuids} is not used anymore. {@code UuidFactoryImpl}
@@ -47,6 +47,11 @@ public enum UuidFactoryImpl implements UuidFactory {
 
   @Override
   public String create() {
+    return Base64.encodeBase64URLSafeString(createAsByteArray());
+  }
+
+  @Override
+  public byte[] createAsByteArray() {
     int sequenceId = sequenceNumber.incrementAndGet() & 0xffffff;
     long timestamp = System.currentTimeMillis();
 
@@ -75,7 +80,7 @@ public enum UuidFactoryImpl implements UuidFactory {
     // Sequence number adds 3 bytes:
     putLong(uuidBytes, sequenceId, 12, 3);
 
-    return Base64.encodeBase64URLSafeString(uuidBytes);
+    return uuidBytes;
   }
 
   /** Puts the lower numberOfLongBytes from l into the array, starting index pos. */
