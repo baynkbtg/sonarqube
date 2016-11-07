@@ -18,11 +18,26 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import { IndexRoute, Route } from 'react-router';
-import AppContainer from './components/AppContainer';
+import App from './App';
 
-export default [
-  <IndexRoute key="index" component={AppContainer}/>,
-  <Route key="1" path="index" component={AppContainer}/>,
-  <Route key="2" path="index/:projectKey" component={AppContainer}/>
-];
+export default class AppContainer extends React.Component {
+  state = {};
+
+  componentDidMount () {
+    window.sonarqube.appStarted.then(options => {
+      this.setState({ component: options.component });
+    });
+  }
+
+  render () {
+    if (!this.state.component) {
+      return null;
+    }
+
+    const component = { ...this.state.component, ...window.sonarqube.overview.component };
+
+    return (
+        <App component={component}/>
+    );
+  }
+}
