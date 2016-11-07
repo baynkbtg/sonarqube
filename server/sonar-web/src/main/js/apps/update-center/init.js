@@ -29,16 +29,14 @@ import Router from './router';
 import Plugins from './plugins';
 
 const App = new Marionette.Application();
-const init = function () {
-  const options = window.sonarqube;
-
+const init = function (el) {
   // State
   this.state = new Backbone.Model({
     updateCenterActive: window.SS.updateCenterActive
   });
 
   // Layout
-  this.layout = new Layout({ el: options.el });
+  this.layout = new Layout({ el });
   this.layout.render();
 
   // Plugins
@@ -70,13 +68,14 @@ const init = function () {
   // Go
   Backbone.history.start({
     pushState: true,
-    root: options.urlRoot
+    root: window.baseUrl + '/updatecenter'
   });
 };
 
-App.on('start', function () {
-  init.call(App);
+App.on('start', function (el) {
+  init.call(App, el);
 });
 
-window.sonarqube.appStarted.then(options => App.start(options));
-
+export default function (el) {
+  App.start(el);
+}

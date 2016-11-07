@@ -34,6 +34,8 @@ import issuesRoutes from '../apps/issues/routes';
 import projectsRoutes from '../apps/projects/routes';
 import qualityGatesRoutes from '../apps/quality-gates/routes';
 import qualityProfilesRoutes from '../apps/quality-profiles/routes';
+import systemRoutes from '../apps/system/routes';
+import updateCenterRoutes from '../apps/update-center/routes';
 import usersRoutes from '../apps/users/routes';
 import webAPIRoutes from '../apps/web-api/routes';
 import configureStore from '../components/store/configureStore';
@@ -57,6 +59,8 @@ window.sonarqube.appStarted.then(options => {
             <Route path="coding_rules">{codingRulesRoutes}</Route>
             <Route path="groups">{groupsRoutes}</Route>
             <Route path="issues">{issuesRoutes}</Route>
+            <Route path="system">{systemRoutes}</Route>
+            <Route path="updatecenter">{updateCenterRoutes}</Route>
             <Route path="users">{usersRoutes}</Route>
             <Route path="web_api">{webAPIRoutes}</Route>
 

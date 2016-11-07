@@ -41,9 +41,7 @@ module.exports = {
     'project-admin': './src/main/js/apps/project-admin/app.js',
     'projects-admin': './src/main/js/apps/projects-admin/app.js',
     'settings': './src/main/js/apps/settings/app.js',
-    'source-viewer': './src/main/js/apps/source-viewer/app.js',
-    'system': './src/main/js/apps/system/app.js',
-    'update-center': './src/main/js/apps/update-center/app.js'
+    'source-viewer': './src/main/js/apps/source-viewer/app.js'
   },
   output: {
     path: paths.appBuild,

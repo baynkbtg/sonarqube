@@ -18,11 +18,13 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Main from './main';
+import { IndexRoute, Route } from 'react-router';
+import UpdateCenterAppContainer from './components/UpdateCenterAppContainer';
 
-window.sonarqube.appStarted.then(options => {
-  const el = document.querySelector(options.el);
-  ReactDOM.render(<Main/>, el);
-});
-
+export default [
+  <IndexRoute key="index" component={UpdateCenterAppContainer}/>,
+  <Route key="installed" path="installed" component={UpdateCenterAppContainer}/>,
+  <Route key="updates" path="updates" component={UpdateCenterAppContainer}/>,
+  <Route key="available" path="available" component={UpdateCenterAppContainer}/>,
+  <Route key="system" path="system" component={UpdateCenterAppContainer}/>
+];
