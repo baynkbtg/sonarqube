@@ -18,14 +18,11 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import { render } from 'react-dom';
+import { IndexRoute, Route } from 'react-router';
+import AppContainer from './components/AppContainer';
 
-import App from './components/App';
-
-window.sonarqube.appStarted.then(options => {
-  const el = document.querySelector(options.el);
-  const component = { ...options.component, ...window.sonarqube.overview.component };
-  render((
-      <App component={component}/>
-  ), el);
-});
+export default [
+  <IndexRoute key="index" component={AppContainer}/>,
+  <Route key="1" path="index" component={AppContainer}/>,
+  <Route key="2" path="index/:projectKey" component={AppContainer}/>
+];

@@ -31,6 +31,7 @@ import componentIssuesRoutes from '../apps/component-issues/routes';
 import customMeasuresRoutes from '../apps/custom-measures/routes';
 import groupsRoutes from '../apps/groups/routes';
 import issuesRoutes from '../apps/issues/routes';
+import overviewRoutes from '../apps/overview/routes';
 import permissionTemplatesRoutes from '../apps/permission-templates/routes';
 import projectsRoutes from '../apps/projects/routes';
 import projectsAdminRoutes from '../apps/projects-admin/routes';
@@ -59,6 +60,7 @@ window.sonarqube.appStarted.then(options => {
           <Route path="/" component={App}>
             <Route path="account">{accountRoutes}</Route>
             <Route path="coding_rules">{codingRulesRoutes}</Route>
+            <Route path="dashboard">{overviewRoutes}</Route>
             <Route path="groups">{groupsRoutes}</Route>
             <Route path="issues">{issuesRoutes}</Route>
             <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
