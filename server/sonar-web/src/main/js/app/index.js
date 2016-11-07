@@ -64,7 +64,6 @@ window.sonarqube.appStarted.then(options => {
             <Route path="account">{accountRoutes}</Route>
             <Route path="background_tasks">{backgroundTasksRoutes}</Route>
             <Route path="coding_rules">{codingRulesRoutes}</Route>
-            <Route path="dashboard">{overviewRoutes}</Route>
             <Route path="groups">{groupsRoutes}</Route>
             <Route path="issues">{issuesRoutes}</Route>
             <Route path="maintenance">{maintenanceRoutes}</Route>
@@ -84,6 +83,7 @@ window.sonarqube.appStarted.then(options => {
               <Route path="code">{codeRoutes}</Route>
               <Route path="component_issues">{componentIssuesRoutes}</Route>
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
+              <Route path="dashboard">{overviewRoutes}</Route>
               <Route path="project/background_tasks">{backgroundTasksRoutes}</Route>
             </Route>
           </Route>

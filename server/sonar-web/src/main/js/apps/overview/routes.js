@@ -19,10 +19,10 @@
  */
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
-import AppContainer from './components/AppContainer';
+import App from './components/App';
 
 export default [
-  <IndexRoute key="index" component={AppContainer}/>,
-  <Route key="1" path="index" component={AppContainer}/>,
-  <Route key="2" path="index/:projectKey" component={AppContainer}/>
+  <IndexRoute key="index" component={App}/>,
+  <Route key="1" path="index" component={App}/>,
+  <Route key="2" path="index/:projectKey" component={App}/>
 ];
