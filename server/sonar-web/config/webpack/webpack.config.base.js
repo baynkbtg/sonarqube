@@ -28,8 +28,10 @@ module.exports = {
     'main': './src/main/js/main/app.js',
     'app': './src/main/js/app/index.js',
 
-    'background-tasks': './src/main/js/apps/background-tasks/app.js',
+    // dedicated store
     'component-measures': './src/main/js/apps/component-measures/app.js',
+
+    // dedicated store
     'global-permissions': './src/main/js/apps/permissions/global/app.js',
     'project-permissions': './src/main/js/apps/permissions/project/app.js',
 

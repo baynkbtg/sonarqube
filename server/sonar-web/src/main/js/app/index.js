@@ -25,6 +25,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import ComponentContainer from './components/ComponentContainer';
 import accountRoutes from '../apps/account/routes';
+import backgroundTasksRoutes from '../apps/background-tasks/routes';
 import codeRoutes from '../apps/code/routes';
 import codingRulesRoutes from '../apps/coding-rules/routes';
 import componentIssuesRoutes from '../apps/component-issues/routes';
@@ -61,6 +62,7 @@ window.sonarqube.appStarted.then(options => {
         <Router history={history}>
           <Route path="/" component={App}>
             <Route path="account">{accountRoutes}</Route>
+            <Route path="background_tasks">{backgroundTasksRoutes}</Route>
             <Route path="coding_rules">{codingRulesRoutes}</Route>
             <Route path="dashboard">{overviewRoutes}</Route>
             <Route path="groups">{groupsRoutes}</Route>
@@ -79,6 +81,7 @@ window.sonarqube.appStarted.then(options => {
               <Route path="code">{codeRoutes}</Route>
               <Route path="component_issues">{componentIssuesRoutes}</Route>
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
+              <Route path="project/background_tasks">{backgroundTasksRoutes}</Route>
             </Route>
 
             {projectsRoutes}
