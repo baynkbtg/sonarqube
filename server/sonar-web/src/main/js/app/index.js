@@ -42,6 +42,7 @@ import systemRoutes from '../apps/system/routes';
 import updateCenterRoutes from '../apps/update-center/routes';
 import usersRoutes from '../apps/users/routes';
 import webAPIRoutes from '../apps/web-api/routes';
+import { maintenanceRoutes, setupRoutes } from '../apps/maintenance/routes';
 import configureStore from '../components/store/configureStore';
 import rootReducer from './store/rootReducer';
 import './styles/index';
@@ -64,9 +65,11 @@ window.sonarqube.appStarted.then(options => {
             <Route path="dashboard">{overviewRoutes}</Route>
             <Route path="groups">{groupsRoutes}</Route>
             <Route path="issues">{issuesRoutes}</Route>
+            <Route path="maintenance">{maintenanceRoutes}</Route>
             <Route path="metrics">{metricsRoutes}</Route>
             <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
             <Route path="projects_admin">{projectsAdminRoutes}</Route>
+            <Route path="setup">{setupRoutes}</Route>
             <Route path="system">{systemRoutes}</Route>
             <Route path="updatecenter">{updateCenterRoutes}</Route>
             <Route path="users">{usersRoutes}</Route>

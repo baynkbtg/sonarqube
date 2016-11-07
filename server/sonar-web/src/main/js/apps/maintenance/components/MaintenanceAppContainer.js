@@ -17,22 +17,15 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import _ from 'underscore';
-import Backbone from 'backbone';
-import Marionette from 'backbone.marionette';
-import MainView from './main-view';
+import React from 'react';
+import init from '../init';
 
-const App = new Marionette.Application();
+export default class MaintenanceAppContainer extends React.Component {
+  componentDidMount () {
+    init(this.refs.container, false);
+  }
 
-App.on('start', function () {
-  const options = window.sonarqube;
-
-  const viewOptions = _.extend(options, {
-    model: new Backbone.Model()
-  });
-  const mainView = new MainView(viewOptions);
-  mainView.render().refresh();
-});
-
-App.start();
-
+  render () {
+    return <div ref="container"/>;
+  }
+}

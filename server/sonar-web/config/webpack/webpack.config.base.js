@@ -33,10 +33,16 @@ module.exports = {
     'global-permissions': './src/main/js/apps/permissions/global/app.js',
     'project-permissions': './src/main/js/apps/permissions/project/app.js',
 
-    'maintenance': './src/main/js/apps/maintenance/app.js',
+    // should not use js
     'markdown': './src/main/js/apps/markdown/app.js',
+
+    // dedicated store
     'project-admin': './src/main/js/apps/project-admin/app.js',
+
+    // dedicated store
     'settings': './src/main/js/apps/settings/app.js',
+
+    // not unique url
     'source-viewer': './src/main/js/apps/source-viewer/app.js'
   },
   output: {
