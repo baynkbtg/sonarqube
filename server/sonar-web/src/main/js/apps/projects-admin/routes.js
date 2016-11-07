@@ -18,16 +18,9 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Main from './main';
-import { getCurrentUser } from '../../api/users';
+import { IndexRoute } from 'react-router';
+import AppContainer from './AppContainer';
 
-window.sonarqube.appStarted.then(options => {
-  getCurrentUser().then(user => {
-    const el = document.querySelector(options.el);
-    const hasProvisionPermission = user.permissions.global.indexOf('provisioning') !== -1;
-    const topLevelQualifiers = options.rootQualifiers;
-    ReactDOM.render(<Main hasProvisionPermission={hasProvisionPermission}
-                       topLevelQualifiers={topLevelQualifiers}/>, el);
-  });
-});
+export default(
+    <IndexRoute component={AppContainer}/>
+);
