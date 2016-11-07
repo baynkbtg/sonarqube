@@ -18,27 +18,9 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, useRouterHistory } from 'react-router';
-import { createHistory } from 'history';
-import App from './components/App';
+import { IndexRoute } from 'react-router';
+import AppContainer from './components/AppContainer';
 
-window.sonarqube.appStarted.then(options => {
-  const el = document.querySelector(options.el);
-
-  const history = useRouterHistory(createHistory)({
-    basename: window.baseUrl + '/permission_templates'
-  });
-
-  const EnhancedApp = props => (
-      <App
-          {...props}
-          topQualifiers={options.rootQualifiers}/>
-  );
-
-  render((
-      <Router history={history}>
-        <Route path="/" component={EnhancedApp}/>
-      </Router>
-  ), el);
-});
+export default (
+    <IndexRoute component={AppContainer}/>
+);
