@@ -18,18 +18,14 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './components/App';
-import configureStore from '../../../components/store/configureStore';
-import rootReducer from '../shared/store/rootReducer';
+import { IndexRoute } from 'react-router';
+import GlobalPermissionsApp from './global/components/App';
+import ProjectPermissionsApp from './project/components/App';
 
-window.sonarqube.appStarted.then(options => {
-  const el = document.querySelector(options.el);
-  const store = configureStore(rootReducer);
-  render((
-      <Provider store={store}>
-        <App project={options.component}/>
-      </Provider>
-  ), el);
-});
+export const globalPermissionsRoutes = (
+    <IndexRoute component={GlobalPermissionsApp}/>
+);
+
+export const projectPermissionsRoutes = (
+    <IndexRoute component={ProjectPermissionsApp}/>
+);

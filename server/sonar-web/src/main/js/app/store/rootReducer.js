@@ -25,6 +25,7 @@ import languages, * as fromLanguages from './languages/reducer';
 import measures, * as fromMeasures from './measures/reducer';
 import globalMessages, * as fromGlobalMessages from '../../components/store/globalMessages';
 
+import permissionsApp, * as fromPermissionsApp from '../../apps/permissions/shared/store/rootReducer';
 import projectsApp, * as fromProjectsApp from '../../apps/projects/store/reducer';
 import qualityGatesApp from '../../apps/quality-gates/store/rootReducer';
 
@@ -37,6 +38,7 @@ export default combineReducers({
   users,
 
   // apps
+  permissionsApp,
   projectsApp,
   qualityGatesApp
 });
@@ -87,4 +89,32 @@ export const getProjectsAppMaxFacetValue = state => (
 
 export const getQualityGatesAppState = state => (
     state.qualityGatesApp
+);
+
+export const getPermissionsAppUsers = state => (
+    fromPermissionsApp.getUsers(state.permissionsApp)
+);
+
+export const getPermissionsAppGroups = state => (
+    fromPermissionsApp.getGroups(state.permissionsApp)
+);
+
+export const isPermissionsAppLoading = state => (
+    fromPermissionsApp.isLoading(state.permissionsApp)
+);
+
+export const getPermissionsAppQuery = state => (
+    fromPermissionsApp.getQuery(state.permissionsApp)
+);
+
+export const getPermissionsAppFilter = state => (
+    fromPermissionsApp.getFilter(state.permissionsApp)
+);
+
+export const getPermissionsAppSelectedPermission = state => (
+    fromPermissionsApp.getSelectedPermission(state.permissionsApp)
+);
+
+export const getPermissionsAppError = state => (
+    fromPermissionsApp.getError(state.permissionsApp)
 );

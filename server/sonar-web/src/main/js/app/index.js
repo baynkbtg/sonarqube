@@ -44,6 +44,7 @@ import updateCenterRoutes from '../apps/update-center/routes';
 import usersRoutes from '../apps/users/routes';
 import webAPIRoutes from '../apps/web-api/routes';
 import { maintenanceRoutes, setupRoutes } from '../apps/maintenance/routes';
+import { globalPermissionsRoutes, projectPermissionsRoutes } from '../apps/permissions/routes';
 import configureStore from '../components/store/configureStore';
 import rootReducer from './store/rootReducer';
 import './styles/index';
@@ -72,6 +73,7 @@ window.sonarqube.appStarted.then(options => {
             <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
             <Route path="projects">{projectsRoutes}</Route>
             <Route path="projects_admin">{projectsAdminRoutes}</Route>
+            <Route path="roles/global">{globalPermissionsRoutes}</Route>
             <Route path="setup">{setupRoutes}</Route>
             <Route path="system">{systemRoutes}</Route>
             <Route path="quality_gates">{qualityGatesRoutes}</Route>
@@ -85,6 +87,7 @@ window.sonarqube.appStarted.then(options => {
               <Route path="component_issues">{componentIssuesRoutes}</Route>
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
               <Route path="project/background_tasks">{backgroundTasksRoutes}</Route>
+              <Route path="project_roles">{projectPermissionsRoutes}</Route>
             </Route>
           </Route>
         </Router>
