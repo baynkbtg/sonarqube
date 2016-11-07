@@ -70,9 +70,12 @@ window.sonarqube.appStarted.then(options => {
             <Route path="maintenance">{maintenanceRoutes}</Route>
             <Route path="metrics">{metricsRoutes}</Route>
             <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
+            <Route path="projects">{projectsRoutes}</Route>
             <Route path="projects_admin">{projectsAdminRoutes}</Route>
             <Route path="setup">{setupRoutes}</Route>
             <Route path="system">{systemRoutes}</Route>
+            <Route path="quality_gates">{qualityGatesRoutes}</Route>
+            <Route path="profiles">{qualityProfilesRoutes}</Route>
             <Route path="updatecenter">{updateCenterRoutes}</Route>
             <Route path="users">{usersRoutes}</Route>
             <Route path="web_api">{webAPIRoutes}</Route>
@@ -83,10 +86,6 @@ window.sonarqube.appStarted.then(options => {
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
               <Route path="project/background_tasks">{backgroundTasksRoutes}</Route>
             </Route>
-
-            {projectsRoutes}
-            {qualityGatesRoutes}
-            {qualityProfilesRoutes}
           </Route>
         </Router>
       </Provider>
