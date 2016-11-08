@@ -25,6 +25,7 @@ public class HttpRequestUidModule extends Module {
   @Override
   protected void configureModule() {
     add(BaseRequestUidGeneratorImpl.class,
-      RequestUidGeneratorImpl.class);
+      RequestUidGeneratorImpl.class,
+      RequestUidMDCStorageFactoryImpl.class);
   }
 }

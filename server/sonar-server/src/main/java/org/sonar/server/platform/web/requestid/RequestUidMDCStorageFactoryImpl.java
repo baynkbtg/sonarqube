@@ -19,23 +19,9 @@
  */
 package org.sonar.server.platform.web.requestid;
 
-import org.junit.Test;
-import org.sonar.core.platform.ComponentContainer;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class HttpRequestUidModuleTest {
-  private static final int COMPONENTS_HARDCODED_IN_CONTAINER = 2;
-
-  private HttpRequestUidModule underTest = new HttpRequestUidModule();
-
-  @Test
-  public void count_components_in_module() {
-    ComponentContainer container = new ComponentContainer();
-    underTest.configure(container);
-
-    assertThat(container.getPicoContainer().getComponentAdapters())
-      .hasSize(COMPONENTS_HARDCODED_IN_CONTAINER + 3);
-
+public class RequestUidMDCStorageFactoryImpl implements RequestUidMDCStorageFactory {
+  @Override
+  public RequestUidMDCStorage put(String requestUid) {
+    return new RequestUidMDCStorage(requestUid);
   }
 }
