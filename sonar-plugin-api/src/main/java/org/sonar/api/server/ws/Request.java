@@ -403,13 +403,14 @@ public abstract class Request {
       this.value = value;
     }
 
-    protected static <T> Param<T> present(T value) {
+    static <T> Param<T> present(T value) {
       return new GenericParam<>(value);
     }
 
     /**
      * Always returns true.
      */
+    @Override
     public boolean isPresent() {
       return true;
     }
@@ -505,7 +506,7 @@ public abstract class Request {
       this.emptyAsNull = emptyAsNull;
     }
 
-    protected static StringParam present(String value) {
+    static StringParam present(String value) {
       return new StringParamImpl(value, false);
     }
 
