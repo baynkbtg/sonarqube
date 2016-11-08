@@ -28,9 +28,6 @@ module.exports = {
     'main': './src/main/js/main/app.js',
     'app': './src/main/js/app/index.js',
 
-    // dedicated store
-    'component-measures': './src/main/js/apps/component-measures/app.js',
-
     // should not use js
     'markdown': './src/main/js/apps/markdown/app.js',
 

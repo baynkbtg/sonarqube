@@ -29,6 +29,7 @@ import backgroundTasksRoutes from '../apps/background-tasks/routes';
 import codeRoutes from '../apps/code/routes';
 import codingRulesRoutes from '../apps/coding-rules/routes';
 import componentIssuesRoutes from '../apps/component-issues/routes';
+import componentMeasuresRoutes from '../apps/component-measures/routes';
 import customMeasuresRoutes from '../apps/custom-measures/routes';
 import groupsRoutes from '../apps/groups/routes';
 import issuesRoutes from '../apps/issues/routes';
@@ -88,6 +89,7 @@ window.sonarqube.appStarted.then(options => {
             <Route component={ComponentContainer}>
               <Route path="code">{codeRoutes}</Route>
               <Route path="component_issues">{componentIssuesRoutes}</Route>
+              <Route path="component_measures">{componentMeasuresRoutes}</Route>
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
               <Route path="project">
                 <Route path="background_tasks">{backgroundTasksRoutes}</Route>
