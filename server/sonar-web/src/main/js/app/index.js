@@ -24,6 +24,7 @@ import { createHistory } from 'history';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import ComponentContainer from './components/ComponentContainer';
+import NullComponent from './components/NullComponent';
 import accountRoutes from '../apps/account/routes';
 import backgroundTasksRoutes from '../apps/background-tasks/routes';
 import codeRoutes from '../apps/code/routes';
@@ -52,54 +53,61 @@ import configureStore from '../components/store/configureStore';
 import rootReducer from './store/rootReducer';
 import './styles/index';
 
-window.sonarqube.appStarted.then(options => {
-  const el = document.querySelector(options.el);
+import '../main/app';
+import isCurrentPathKnown from './utils/isCurrentPathKnown';
 
-  const history = useRouterHistory(createHistory)({
-    basename: window.baseUrl + '/'
-  });
+if (isCurrentPathKnown()) {
+  window.sonarqube.appStarted.then(options => {
+    const el = document.querySelector(options.el);
 
-  const store = configureStore(rootReducer);
+    const history = useRouterHistory(createHistory)({
+      basename: window.baseUrl + '/'
+    });
 
-  render((
-      <Provider store={store}>
-        <Router history={history}>
-          <Route path="/" component={App}>
-            <Route path="account">{accountRoutes}</Route>
-            <Route path="background_tasks">{backgroundTasksRoutes}</Route>
-            <Route path="coding_rules">{codingRulesRoutes}</Route>
-            <Route path="dashboard">{overviewRoutes}</Route>
-            <Route path="groups">{groupsRoutes}</Route>
-            <Route path="issues">{issuesRoutes}</Route>
-            <Route path="maintenance">{maintenanceRoutes}</Route>
-            <Route path="metrics">{metricsRoutes}</Route>
-            <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
-            <Route path="projects">{projectsRoutes}</Route>
-            <Route path="projects_admin">{projectsAdminRoutes}</Route>
-            <Route path="roles/global">{globalPermissionsRoutes}</Route>
-            <Route path="settings">{settingsRoutes}</Route>
-            <Route path="setup">{setupRoutes}</Route>
-            <Route path="system">{systemRoutes}</Route>
-            <Route path="quality_gates">{qualityGatesRoutes}</Route>
-            <Route path="profiles">{qualityProfilesRoutes}</Route>
-            <Route path="updatecenter">{updateCenterRoutes}</Route>
-            <Route path="users">{usersRoutes}</Route>
-            <Route path="web_api">{webAPIRoutes}</Route>
+    const store = configureStore(rootReducer);
 
-            <Route component={ComponentContainer}>
-              <Route path="code">{codeRoutes}</Route>
-              <Route path="component_issues">{componentIssuesRoutes}</Route>
-              <Route path="component_measures">{componentMeasuresRoutes}</Route>
-              <Route path="custom_measures">{customMeasuresRoutes}</Route>
-              <Route path="project">
-                <Route path="background_tasks">{backgroundTasksRoutes}</Route>
-                <Route path="settings">{settingsRoutes}</Route>
-                {projectAdminRoutes}
+    render((
+        <Provider store={store}>
+          <Router history={history}>
+            <Route path="/" component={App}>
+              <Route path="account">{accountRoutes}</Route>
+              <Route path="background_tasks">{backgroundTasksRoutes}</Route>
+              <Route path="coding_rules">{codingRulesRoutes}</Route>
+              <Route path="dashboard">{overviewRoutes}</Route>
+              <Route path="groups">{groupsRoutes}</Route>
+              <Route path="issues">{issuesRoutes}</Route>
+              <Route path="maintenance">{maintenanceRoutes}</Route>
+              <Route path="metrics">{metricsRoutes}</Route>
+              <Route path="permission_templates">{permissionTemplatesRoutes}</Route>
+              <Route path="projects">{projectsRoutes}</Route>
+              <Route path="projects_admin">{projectsAdminRoutes}</Route>
+              <Route path="roles/global">{globalPermissionsRoutes}</Route>
+              <Route path="settings">{settingsRoutes}</Route>
+              <Route path="setup">{setupRoutes}</Route>
+              <Route path="system">{systemRoutes}</Route>
+              <Route path="quality_gates">{qualityGatesRoutes}</Route>
+              <Route path="profiles">{qualityProfilesRoutes}</Route>
+              <Route path="updatecenter">{updateCenterRoutes}</Route>
+              <Route path="users">{usersRoutes}</Route>
+              <Route path="web_api">{webAPIRoutes}</Route>
+
+              <Route component={ComponentContainer}>
+                <Route path="code">{codeRoutes}</Route>
+                <Route path="component_issues">{componentIssuesRoutes}</Route>
+                <Route path="component_measures">{componentMeasuresRoutes}</Route>
+                <Route path="custom_measures">{customMeasuresRoutes}</Route>
+                <Route path="project">
+                  <Route path="background_tasks">{backgroundTasksRoutes}</Route>
+                  <Route path="settings">{settingsRoutes}</Route>
+                  {projectAdminRoutes}
+                </Route>
+                <Route path="project_roles">{projectPermissionsRoutes}</Route>
               </Route>
-              <Route path="project_roles">{projectPermissionsRoutes}</Route>
             </Route>
-          </Route>
-        </Router>
-      </Provider>
-  ), el);
-});
+
+            <Route path="*" component={NullComponent}/>
+          </Router>
+        </Provider>
+    ), el);
+  });
+}
