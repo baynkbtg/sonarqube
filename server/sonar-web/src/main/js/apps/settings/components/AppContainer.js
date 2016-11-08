@@ -17,16 +17,24 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import { connect } from 'react-redux';
-import LicenseRow from './LicenseRow';
-import { setLicense } from '../store/licenses/actions';
-import { getSettingsAppLicenseByKey } from '../../../app/store/rootReducer';
+import React from 'react';
+import App from './App';
 
-const mapStateToProps = (state, ownProps) => ({
-  license: getSettingsAppLicenseByKey(state, ownProps.licenseKey)
-});
+export default class AppContainer extends React.Component {
+  state = {};
 
-export default connect(
-    mapStateToProps,
-    { setLicense }
-)(LicenseRow);
+  componentDidMount () {
+    window.sonarqube.appStarted.then(options =>
+        this.setState({ ready: true, component: options.component }));
+  }
+
+  render () {
+    if (!this.state.ready) {
+      return null;
+    }
+
+    return (
+        <App {...this.props} component={this.state.component}/>
+    );
+  }
+}

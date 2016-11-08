@@ -37,9 +37,6 @@ module.exports = {
     // dedicated store
     'project-admin': './src/main/js/apps/project-admin/app.js',
 
-    // dedicated store
-    'settings': './src/main/js/apps/settings/app.js',
-
     // not unique url
     'source-viewer': './src/main/js/apps/source-viewer/app.js'
   },

@@ -28,6 +28,7 @@ import globalMessages, * as fromGlobalMessages from '../../components/store/glob
 import permissionsApp, * as fromPermissionsApp from '../../apps/permissions/shared/store/rootReducer';
 import projectsApp, * as fromProjectsApp from '../../apps/projects/store/reducer';
 import qualityGatesApp from '../../apps/quality-gates/store/rootReducer';
+import settingsApp, * as fromSettingsApp from '../../apps/settings/store/rootReducer';
 
 export default combineReducers({
   components,
@@ -40,7 +41,8 @@ export default combineReducers({
   // apps
   permissionsApp,
   projectsApp,
-  qualityGatesApp
+  qualityGatesApp,
+  settingsApp
 });
 
 export const getComponent = (state, key) => (
@@ -117,4 +119,48 @@ export const getPermissionsAppSelectedPermission = state => (
 
 export const getPermissionsAppError = state => (
     fromPermissionsApp.getError(state.permissionsApp)
+);
+
+export const getSettingsAppDefinition = (state, key) => (
+    fromSettingsApp.getDefinition(state.settingsApp, key)
+);
+
+export const getSettingsAppAllCategories = state => (
+    fromSettingsApp.getAllCategories(state.settingsApp)
+);
+
+export const getSettingsAppDefaultCategory = state => (
+    fromSettingsApp.getDefaultCategory(state.settingsApp)
+);
+
+export const getSettingsAppSettingsForCategory = (state, category) => (
+    fromSettingsApp.getSettingsForCategory(state.settingsApp, category)
+);
+
+export const getSettingsAppChangedValue = (state, key) => (
+    fromSettingsApp.getChangedValue(state.settingsApp, key)
+);
+
+export const isSettingsAppLoading = (state, key) => (
+    fromSettingsApp.isLoading(state.settingsApp, key)
+);
+
+export const getSettingsAppLicenseByKey = (state, key) => (
+    fromSettingsApp.getLicenseByKey(state.settingsApp, key)
+);
+
+export const getSettingsAppAllLicenseKeys = state => (
+    fromSettingsApp.getAllLicenseKeys(state.settingsApp)
+);
+
+export const getSettingsAppValidationMessage = (state, key) => (
+    fromSettingsApp.getValidationMessage(state.settingsApp, key)
+);
+
+export const getSettingsAppEncryptionState = state => (
+    fromSettingsApp.getEncryptionState(state.settingsApp)
+);
+
+export const getSettingsAppGlobalMessages = state => (
+    fromSettingsApp.getGlobalMessages(state.settingsApp)
 );
