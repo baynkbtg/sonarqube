@@ -34,9 +34,6 @@ module.exports = {
     // should not use js
     'markdown': './src/main/js/apps/markdown/app.js',
 
-    // dedicated store
-    'project-admin': './src/main/js/apps/project-admin/app.js',
-
     // not unique url
     'source-viewer': './src/main/js/apps/source-viewer/app.js'
   },

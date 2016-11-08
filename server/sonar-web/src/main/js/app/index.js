@@ -35,6 +35,7 @@ import issuesRoutes from '../apps/issues/routes';
 import metricsRoutes from '../apps/metrics/routes';
 import overviewRoutes from '../apps/overview/routes';
 import permissionTemplatesRoutes from '../apps/permission-templates/routes';
+import projectAdminRoutes from '../apps/project-admin/routes';
 import projectsRoutes from '../apps/projects/routes';
 import projectsAdminRoutes from '../apps/projects-admin/routes';
 import qualityGatesRoutes from '../apps/quality-gates/routes';
@@ -88,8 +89,11 @@ window.sonarqube.appStarted.then(options => {
               <Route path="code">{codeRoutes}</Route>
               <Route path="component_issues">{componentIssuesRoutes}</Route>
               <Route path="custom_measures">{customMeasuresRoutes}</Route>
-              <Route path="project/background_tasks">{backgroundTasksRoutes}</Route>
-              <Route path="project/settings">{settingsRoutes}</Route>
+              <Route path="project">
+                <Route path="background_tasks">{backgroundTasksRoutes}</Route>
+                <Route path="settings">{settingsRoutes}</Route>
+                {projectAdminRoutes}
+              </Route>
               <Route path="project_roles">{projectPermissionsRoutes}</Route>
             </Route>
           </Route>

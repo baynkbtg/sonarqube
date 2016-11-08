@@ -17,12 +17,18 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import { connect } from 'react-redux';
-import GlobalMessages from '../../../components/controls/GlobalMessages';
-import { getProjectAdminGlobalMessages } from '../../../app/store/rootReducer';
+import React from 'react';
+import { Route } from 'react-router';
+import Deletion from './deletion/Deletion';
+import QualityProfiles from './quality-profiles/QualityProfiles';
+import QualityGate from './quality-gate/QualityGate';
+import Links from './links/Links';
+import Key from './key/Key';
 
-const mapStateToProps = state => ({
-  messages: getProjectAdminGlobalMessages(state)
-});
-
-export default connect(mapStateToProps)(GlobalMessages);
+export default [
+  <Route key="deletion" path="deletion" component={Deletion}/>,
+  <Route key="quality_profiles" path="quality_profiles" component={QualityProfiles}/>,
+  <Route key="quality_gate" path="quality_gate" component={QualityGate}/>,
+  <Route key="links" path="links" component={Links}/>,
+  <Route key="key" path="key" component={Key}/>
+];
